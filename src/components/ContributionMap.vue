@@ -1,15 +1,18 @@
 <template>
 	<div class="contribution-map">
 		<div ref="chartContainer" class="chart-container">
-			<div v-if="loading" class="placeholder"></div>
+			<div class="placeholder">
+				<span>Loading GitHub contributions...</span>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import * as d3 from 'd3';
-import { createClient, fetchExchange } from '@urql/core';
+import { createClient, fetchExchange } from '@urql/core'
+import * as d3 from 'd3'
+import gsap from 'gsap'
+import { onMounted, ref } from 'vue'
 
 interface ContributionDay {
 	contributionCount: number;
@@ -25,9 +28,14 @@ interface ContributionCalendar {
 	weeks: Week[];
 }
 
+// 2.5 seconds (matches typing header duration)
+const TIME_TO_ANIMATE = 1000 * 2.5;
+
 const chartContainer = ref<HTMLElement | null>(null);
 const loading = ref(true);
 const username = 'rschubkegel';
+const timeout = ref<ReturnType<typeof setTimeout> | null>(null);
+const overlayHidden = ref(false);
 
 // GraphQL client setup
 const client = createClient({
@@ -129,13 +137,77 @@ const createChart = (data: ContributionCalendar) => {
 	.attr('rx', 2)
 	.append('title')
 	.text((d: ContributionDay) => `${d.date}: ${d.contributionCount} contributions`);
+
+	// Animate on click
+	chartContainer.value.querySelector<HTMLAnchorElement>('a')?.addEventListener('click', e => {
+		e.preventDefault();
+		if (timeout.value) clearTimeout(timeout.value);
+		animateChart();
+	});
+
+	// Set placeholder to absolute and pointer events to none
+	gsap.set('.chart-container .placeholder', {
+		position: 'absolute',
+		inset: 0,
+		pointerEvents: 'none',
+	});
+};
+
+const animateChart = () => {
+	if (loading.value) return;
+	if (!chartContainer.value) return;
+
+	// Animate placeholder out (only once)
+	if (!overlayHidden.value) {
+		overlayHidden.value = true;
+		gsap.to('.chart-container .placeholder span', {
+			opacity: 0,
+			overwrite: true,
+			duration: 0.9,
+			ease: 'power4.out',
+		});
+		gsap.to('.chart-container .placeholder', {
+			opacity: 0,
+			overwrite: true,
+			duration: 2.8,
+			ease: 'power4.out',
+		});
+	}
+
+	// Animate days in (repeatedly)
+	gsap.getById('contribution-map-days')?.revert();
+	gsap.from('.chart-container .day', {
+		id: 'contribution-map-days',
+		opacity: 0,
+		scale: 0.3,
+		duration: 0.4,
+		ease: 'elastic.out(1.2,1)',
+		stagger: {
+			amount: 1.5,
+			from: 'start',
+			grid: [52, 7],
+			ease: 'none',
+		},
+	});
 };
 
 onMounted(async () => {
+	const time = Date.now();
 	try {
 		const data = await fetchContributions(username);
 		if (data) {
 			createChart(data);
+			requestAnimationFrame(() => {
+				const diff = Date.now() - time;
+				if (diff > TIME_TO_ANIMATE) {
+					animateChart();
+				} else {
+					timeout.value = setTimeout(() => {
+						animateChart();
+						timeout.value = null;
+					}, TIME_TO_ANIMATE - diff);
+				}
+			});
 		}
 	} finally {
 		loading.value = false;
@@ -146,6 +218,13 @@ onMounted(async () => {
 <style scoped>
 .contribution-map {
 	width: 100%;
+	margin-top: calc(var(--spacing) * 1.5)
+}
+
+@media (max-width: 700px) {
+	.contribution-map {
+		display: none;
+	}
 }
 
 .chart-container {
@@ -156,9 +235,16 @@ onMounted(async () => {
 .placeholder {
 	width: 100%;
 	height: auto;
-	aspect-ratio: 634 / 82;
-	background-color: var(--color-github-muted);
+	aspect-ratio: 634 / 86;
+	background-color: color-mix(in srgb, var(--color-github-muted) 25%, var(--color-bg-strong));
+	border: 2px solid var(--color-github-muted);
 	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-style: italic;
+	font-weight: 100;
+	color: var(--color-github-medium);
 }
 
 .day {
