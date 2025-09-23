@@ -12,7 +12,7 @@
 import { createClient, fetchExchange } from '@urql/core'
 import * as d3 from 'd3'
 import gsap from 'gsap'
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 interface ContributionDay {
 	contributionCount: number;
@@ -28,13 +28,17 @@ interface ContributionCalendar {
 	weeks: Week[];
 }
 
+const INITIALIZE_DEBOUNCE_TIME = 200;
+
 // 2.5 seconds (matches typing header duration)
 const TIME_TO_ANIMATE = 1000 * 2.5;
 
 const chartContainer = ref<HTMLElement | null>(null);
 const loading = ref(true);
 const username = 'rschubkegel';
-const timeout = ref<ReturnType<typeof setTimeout> | null>(null);
+const initializeTimeout = ref<ReturnType<typeof setTimeout> | null>(null);
+const isInitialized = ref(false);
+const revealTimeout = ref<ReturnType<typeof setTimeout> | null>(null);
 const overlayHidden = ref(false);
 
 // GraphQL client setup
@@ -141,7 +145,7 @@ const createChart = (data: ContributionCalendar) => {
 	// Animate on click
 	chartContainer.value.querySelector<HTMLAnchorElement>('a')?.addEventListener('click', e => {
 		e.preventDefault();
-		if (timeout.value) clearTimeout(timeout.value);
+		if (revealTimeout.value) clearTimeout(revealTimeout.value);
 		animateChart();
 	});
 
@@ -191,7 +195,10 @@ const animateChart = () => {
 	});
 };
 
-onMounted(async () => {
+const _initialize = async () => {
+	if (window.innerWidth < 700 || isInitialized.value) return;
+	isInitialized.value = true;
+
 	const time = Date.now();
 	try {
 		const data = await fetchContributions(username);
@@ -202,9 +209,9 @@ onMounted(async () => {
 				if (diff > TIME_TO_ANIMATE) {
 					animateChart();
 				} else {
-					timeout.value = setTimeout(() => {
+					revealTimeout.value = setTimeout(() => {
 						animateChart();
-						timeout.value = null;
+						revealTimeout.value = null;
 					}, TIME_TO_ANIMATE - diff);
 				}
 			});
@@ -212,6 +219,22 @@ onMounted(async () => {
 	} finally {
 		loading.value = false;
 	}
+}
+
+const initialize = () => {
+	if (initializeTimeout.value) clearTimeout(initializeTimeout.value);
+	initializeTimeout.value = setTimeout(() => {
+		_initialize();
+	}, INITIALIZE_DEBOUNCE_TIME);
+}
+
+onMounted(() => {
+	initialize();
+	window.addEventListener('resize', initialize);
+});
+
+onUnmounted(() => {
+	window.removeEventListener('resize', initialize);
 });
 </script>
 
