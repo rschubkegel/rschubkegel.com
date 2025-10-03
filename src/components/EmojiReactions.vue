@@ -66,9 +66,9 @@ const connectSocket = () => {
 		socket.value = io(url, {
 			autoConnect: true,
 			reconnection: true,
-			reconnectionDelay: 1000,
-			reconnectionAttempts: 5,
-			timeout: 20000
+			reconnectionDelay: 2000, // 2 seconds
+			reconnectionAttempts: 3,
+			timeout: 20000, // 20 seconds
 		});
 		
 		socket.value.on('connect', () => {
