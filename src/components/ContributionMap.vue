@@ -28,10 +28,14 @@ interface ContributionCalendar {
 	weeks: Week[];
 }
 
-const INITIALIZE_DEBOUNCE_TIME = 200;
+/** How long to wait before initializing the chart */
+const INITIALIZE_DEBOUNCE_TIME = 250;
 
-// 2.5 seconds (matches typing header duration)
-const TIME_TO_ANIMATE = 1000 * 2.5;
+/** How long to wait before animating the chart */
+const TIME_TO_ANIMATE = 300;
+
+/** How many weeks to show on mobile (6 months) */
+const WEEKS_ON_MOBILE = 4 * 6;
 
 const chartContainer = ref<HTMLElement | null>(null);
 const loading = ref(true);
@@ -122,11 +126,22 @@ const fetchContributions = async (username: string): Promise<ContributionCalenda
 const createChart = (data: ContributionCalendar) => {
 	if (!chartContainer.value) return;
 	
-	const width = 634;
-	const height = 82;
+	const filteredData = { ...data };
+	const isMobile = window.innerWidth < 600;
+	
+	// On mobile, only show the most recent x months
+	if (isMobile) {
+		filteredData.weeks = data.weeks.slice(-WEEKS_ON_MOBILE);
+		const filteredContributions = filteredData.weeks.reduce((total, week) => 
+			total + week.contributionDays.reduce((weekTotal, day) => weekTotal + day.contributionCount, 0), 0);
+		filteredData.totalContributions = filteredContributions;
+	}
+
 	const cellSize = 10;
 	const cellPadding = 2;
-	
+	const width = filteredData.weeks.length * cellSize + (filteredData.weeks.length - 1) * cellPadding;
+	const height = 7 * cellSize + 6 * cellPadding;
+
 	const svg = d3
 	.select(chartContainer.value)
 	.append('a')
@@ -154,7 +169,7 @@ const createChart = (data: ContributionCalendar) => {
 	// Create week groups
 	const weekGroups = svg
 	.selectAll('.week')
-	.data(data.weeks)
+	.data(filteredData.weeks)
 	.enter()
 	.append('g')
 	.attr('class', 'week')
@@ -206,7 +221,7 @@ const animateChart = () => {
 		gsap.to('.chart-container .placeholder', {
 			opacity: 0,
 			overwrite: true,
-			duration: 2.8,
+			duration: 3.2,
 			ease: 'power4.out',
 		});
 	}
@@ -217,10 +232,10 @@ const animateChart = () => {
 		id: 'contribution-map-days',
 		opacity: 0,
 		scale: 0.3,
-		duration: 0.4,
+		duration: 0.6,
 		ease: 'elastic.out(1.2,1)',
 		stagger: {
-			amount: 1.5,
+			amount: 2.0,
 			from: 'start',
 			grid: [52, 7],
 			ease: 'none',
@@ -229,7 +244,7 @@ const animateChart = () => {
 };
 
 const _initialize = async () => {
-	if (window.innerWidth < 700 || isInitialized.value) return;
+	if (isInitialized.value) return;
 	isInitialized.value = true;
 
 	const time = Date.now();
@@ -257,6 +272,18 @@ const _initialize = async () => {
 const initialize = () => {
 	if (initializeTimeout.value) clearTimeout(initializeTimeout.value);
 	initializeTimeout.value = setTimeout(() => {
+		// Clear existing chart if it exists (for resize events)
+		const anchor = chartContainer.value?.querySelector('a');
+		if (anchor) {
+			anchor.remove();
+			gsap.set('.chart-container .placeholder', {
+				position: 'unset',
+				inset: 'unset',
+				pointerEvents: 'unset',
+			});
+			isInitialized.value = false;
+			overlayHidden.value = false;
+		}
 		_initialize();
 	}, INITIALIZE_DEBOUNCE_TIME);
 }
@@ -277,12 +304,6 @@ onUnmounted(() => {
 	margin-top: calc(var(--spacing) * 1.5)
 }
 
-@media (max-width: 700px) {
-	.contribution-map {
-		display: none;
-	}
-}
-
 .chart-container {
 	width: 100%;
 	position: relative;
@@ -291,7 +312,6 @@ onUnmounted(() => {
 .placeholder {
 	width: 100%;
 	height: auto;
-	aspect-ratio: 634 / 86;
 	background-color: color-mix(in srgb, var(--color-github-muted) 25%, var(--color-bg-strong));
 	border: 2px solid var(--color-github-muted);
 	border-radius: 4px;
@@ -301,6 +321,14 @@ onUnmounted(() => {
 	font-style: italic;
 	font-weight: 100;
 	color: var(--color-github-medium);
+
+	@media (max-width: 599px) {
+		aspect-ratio: 286 / 82;
+	}
+
+	@media (min-width: 600px) {
+		aspect-ratio: 634 / 82;
+	}
 }
 
 .day {
