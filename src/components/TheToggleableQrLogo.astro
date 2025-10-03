@@ -7,7 +7,7 @@ const isRoot = Astro.url.pathname.length <= 1
 ---
 
 <div style={{ display: isRoot ? undefined : 'none' }}>
-	<ToggleableElement client:load taps={3}>
+	<ToggleableElement client:load taps={3} setStorageOnTap unsetStorageOnTap>
 		<RylanIcon slot="default" />
 		<QrCode slot="alternate" />
 	</ToggleableElement>

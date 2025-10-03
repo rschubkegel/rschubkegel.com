@@ -12,6 +12,7 @@ import TheHead from '@components/TheHead.astro';
 import TheHeader from '@components/TheHeader.astro';
 import TheToggleableQrLogo from '@components/TheToggleableQrLogo.astro';
 import TopOfPageButton from '@components/TopOfPageButton.vue';
+import EmojiReactions from '@components/EmojiReactions.vue';
 
 const DEFAULT_TITLE = "Rylan Schubkegel's Portfolio"
 const DEFAULT_DESCRIPTION = "The pluralistic portfolio of professional and personal projects produced by Rylan Schubkegel."
@@ -24,6 +25,7 @@ const title = _title || frontmatter?.title || DEFAULT_TITLE
 <html lang="en">
 <TheHead description={description} title={title} />
 <body>
+	<EmojiReactions client:load />
 	<div id="gradient-background" class="fixed">
 		<MeshGradient />
 	</div>

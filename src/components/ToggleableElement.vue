@@ -1,12 +1,21 @@
 <script setup lang="ts">
-import gsap from 'gsap';
-import { ref, watch } from 'vue';
+import { setLogoPressed } from '@lib/globals'
+import gsap from 'gsap'
+import { ref, watch } from 'vue'
 
 const props = defineProps<{
 	/**
 	* The number of taps required to change which slot is rendered.
 	*/
 	taps: number;
+	/**
+	* Whether to set localStorage when tapped (for logo press detection)
+	*/
+	setStorageOnTap?: boolean;
+	/**
+	* Whether to unset localStorage when tapped (for logo press detection)
+	*/
+	unsetStorageOnTap?: boolean;
 }>();
 
 const tapCount = ref(0);
@@ -39,9 +48,18 @@ watch(tapCount, value => {
 			animatePulse(1 + Math.max(0, (value / props.taps) * 0.2));
 		}
 		if (value >= Math.max(props.taps, 0)) {
+			// Set the alternate slot to visible
 			isAlternateVisible.value = true;
+
+			// Set localStorage if enabled
+			if (props.setStorageOnTap) {
+				setLogoPressed();
+			}
+
+			// Reset the tap count
 			tapCount.value = -1;
 		} else if (value === 0) {
+			// Set the alternate slot to hidden
 			isAlternateVisible.value = false;
 		}
 	}
