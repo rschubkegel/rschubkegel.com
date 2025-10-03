@@ -74,6 +74,27 @@ const query = `
 `;
 
 const fetchContributions = async (username: string): Promise<ContributionCalendar | null> => {
+	const cacheKey = 'github-contributions-cache';
+	const expirationKey = 'github-contributions-expiration';
+	const expirationTime = 1000 * 60 * 60 * 3; // 3 hours in milliseconds
+	
+	// Check if cached data exists and is still valid
+	const cachedData = localStorage.getItem(cacheKey);
+	const expirationTimestamp = localStorage.getItem(expirationKey);
+	const now = Date.now();
+	
+	if (cachedData && expirationTimestamp && parseInt(expirationTimestamp) > now) {
+		try {
+			return JSON.parse(cachedData);
+		} catch (error) {
+			console.warn('Failed to parse cached contribution data:', error);
+			// Clear invalid cache
+			localStorage.removeItem(cacheKey);
+			localStorage.removeItem(expirationKey);
+		}
+	}
+	
+	// Fetch fresh data from API
 	const oneYearAgo = new Date();
 	oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 	
@@ -83,7 +104,19 @@ const fetchContributions = async (username: string): Promise<ContributionCalenda
 		to: new Date().toISOString(),
 	});
 	
-	return result.data?.user?.contributionsCollection?.contributionCalendar;
+	const data = result.data?.user?.contributionsCollection?.contributionCalendar;
+	
+	// Cache the result
+	if (data) {
+		try {
+			localStorage.setItem(cacheKey, JSON.stringify(data));
+			localStorage.setItem(expirationKey, (now + expirationTime).toString());
+		} catch (error) {
+			console.warn('Failed to cache contribution data:', error);
+		}
+	}
+	
+	return data;
 };
 
 const createChart = (data: ContributionCalendar) => {
