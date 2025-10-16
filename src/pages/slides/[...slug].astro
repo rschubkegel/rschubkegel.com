@@ -20,7 +20,9 @@ const { slide } = Astro.props
   import Reveal from "reveal.js"
   // @ts-ignore no declaration file
   import Markdown from "reveal.js/plugin/markdown/markdown.esm.js"
-  new Reveal({ plugins: [Markdown] }).initialize()
+  // @ts-ignore no declaration file
+  import Notes from "reveal.js/plugin/notes/notes.esm.js"
+  new Reveal({ plugins: [Markdown, Notes] }).initialize()
 </script>
 
 <SlideshowLayout title={slide.data.title} description={slide.data.description}>
