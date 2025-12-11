@@ -2,6 +2,7 @@
 interface Props {
 	description?: string
 	frontmatter?: Record<string, any>
+	path?: string
 	title?: string
 }
 
@@ -16,14 +17,14 @@ import EmojiReactions from '@components/EmojiReactions.vue';
 
 const DEFAULT_TITLE = "Rylan Schubkegel's Portfolio"
 const DEFAULT_DESCRIPTION = "The pluralistic portfolio of professional and personal projects produced by Rylan Schubkegel."
-const { description: _description, frontmatter, title: _title } = Astro.props
+const { description: _description, frontmatter, path = '/', title: _title } = Astro.props
 const description = _description || frontmatter?.description || DEFAULT_DESCRIPTION
 const title = _title || frontmatter?.title || DEFAULT_TITLE
 ---
 
 <!doctype html>
 <html lang="en">
-<TheHead description={description} title={title} />
+<TheHead description={description} path={path} title={title} />
 <body>
 	<EmojiReactions client:load />
 	<div id="gradient-background" class="fixed">

@@ -12,6 +12,6 @@ const pageTitle = title || frontmatter?.title;
 const pageDescription = description || frontmatter?.description;
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout path={Astro.url.pathname} title={pageTitle} description={pageDescription}>
 	<slot />
 </BaseLayout>

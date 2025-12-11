@@ -6,7 +6,7 @@ const allSlides = await getCollection('slides');
 const sortedSlides = allSlides.sort((a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime());
 ---
 
-<BaseLayout title="Slideshows" description="A collection of slideshows and presentations.">
+<BaseLayout path={Astro.url.pathname} title="Slideshows" description="A collection of slideshows and presentations.">
   <h1>Slideshows</h1>
   
   <p>Browse my slideshows and presentations.</p>

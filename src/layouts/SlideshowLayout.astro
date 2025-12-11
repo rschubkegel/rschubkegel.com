@@ -17,7 +17,7 @@ const title = _title || frontmatter?.title || DEFAULT_TITLE
 
 <!doctype html>
 <html lang="en">
-<TheHead description={description} title={title} />
+<TheHead description={description} path={Astro.url.pathname} title={title} />
 <body>
 	<slot />
 </body>

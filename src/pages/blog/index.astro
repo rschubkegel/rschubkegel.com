@@ -6,7 +6,7 @@ const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort((a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime());
 ---
 
-<BaseLayout title="Blog" description="Blog posts about... things.">
+<BaseLayout path={Astro.url.pathname} title="Blog" description="Blog posts about... things.">
   <h1>Blog</h1>
   
   <p>I don't ever write. But if I did, it would be here.</p>
