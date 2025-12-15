@@ -19,6 +19,10 @@ const slides = defineCollection({
     published: z.coerce.date(),
     tags: z.array(z.string()),
     author: z.string(),
+    /**
+     * If `true`, the slide will not be shown on the slides page.
+     */
+    hidden: z.boolean().optional(),
   }),
 })
 

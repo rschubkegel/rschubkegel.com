@@ -4,6 +4,7 @@ description: "Overview of KeepSafe.ai internal Silverpine project"
 published: "2025-10-16"
 author: "Rylan Schubkegel"
 tags: ["silverpine", "keepsafe", "vue", "nuxt", "web", "ai"]
+hidden: true
 ---
 
 ![KeepSafe.ai logo](https://keepsafe.ai/images/keepsafe-footer.svg)
