@@ -1,0 +1,91 @@
+---
+title: "Nano Defender"
+description: "Reflections on the development of Nano Defender, an arcade game made for Mini Game Jam #49."
+published: "2025-11-16:00:00-08:00"
+author: "Rylan Schubkegel"
+tags: ["game-development", "post-mortem", "godot"]
+---
+
+import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
+import nanoDefenderDay1 from '@assets/images/games/nano-defender/development-1.png'
+import nanoDefenderDay2 from '@assets/images/games/nano-defender/development-2.png'
+import nanoDefenderDay3 from '@assets/images/games/nano-defender/development-3.webp'
+import nanoDefenderGameplay1 from '@assets/images/games/nano-defender/gameplay-1.png'
+import nanoDefenderGameplay2 from '@assets/images/games/nano-defender/gameplay-2.png'
+import nanoDefenderGameplay3 from '@assets/images/games/nano-defender/gameplay-3.png'
+import nanoDefenderSplash from '@assets/images/games/nano-defender/splash.png'
+
+<FlexBasedImageContainer childrenProps={[
+	{ src: nanoDefenderSplash, alt: "Splash screen for the game" },
+]} />
+
+This is a post-mortem of the development of [Nano Defender](https://supergobo.itch.io/nano-defender), an arcade game made for the \~60 hour game jam [Mini Game Jam #49](https://itch.io/jam/mini-jame-gam-49).
+
+- [Nano Defender](https://supergobo.itch.io/nano-defender) (play the game)
+- [Submission page](https://itch.io/jam/mini-jame-gam-49/rate/4045136) (see other jammers' comments on the game)
+- [Jam results](https://itch.io/jam/mini-jame-gam-49/results) (see the rankings)
+
+## The Team
+
+For this game jam, I teamed up with some awesome coworkers from [Silverpine](https://silverpine.com/):
+
+- [Jon](https://www.linkedin.com/in/cheesemaker/) (UI)
+- [Kim](https://www.linkedin.com/in/kim-vertner-9ba749163/) (music, sound effects, UI)
+- [Hunter](https://www.linkedin.com/in/huntervertner/) (visual design, effects)
+
+## The Concept
+
+From the jam description:
+
+> The jam will have a theme and a special object. Your game should be based around the theme, which gets revealed when the jam starts. The special object should be in your game, and should play a somewhat important role.
+
+For this jam, the theme was __explode__ and the special object was __box__.
+
+## Development
+
+### Day 1
+
+Friday was super productive! We hit the ground running by sharing ideas over Discord. We all liked the idea of a more "creative" interpretation of the theme; literal bombs and boxes weren't very interesting to us. By noon we landed on an idea inspired by Jon, a "population explosion" that evolved into a "bacteria explosion" game.
+
+With a concept solidified, we each got to work on our respective tasks. Kim fleshed out a simple design document, Hunter worked on the visual design, Jon designed the UI, and I worked on basic gameplay mechanics. By the end of the first day, we had basic gameplay and a simple HUD.
+
+<FlexBasedImageContainer childrenProps={[
+	{ src: nanoDefenderDay1, alt: "Screenshot of the game from day 1" },
+]} />
+
+### Day 2
+
+Saturday started with some more gameplay implementation. We added a special ability that can be activated after collecting white blood cells, implemented a "capacity" limit on the capture bot, and added large enemies that take up more space in your capture bot to create more interesting gameplay.
+
+We also added made sure that the game got more difficult over time.
+
+The HUD was fleshed out and the "wheel of misfortune" was created with fun flavor text (this ended up being one of the highlights of the game).
+
+<FlexBasedImageContainer childrenProps={[
+	{ src: nanoDefenderDay2, alt: "Screenshot of the game from day 2" },
+]} />
+
+### Day 3
+
+Sunday was short and frantic! We worked on bug fixes, polish, and the Itch submission page. With only 37 seconds before the deadline, we were able to submit the game in the nick of time!
+
+<FlexBasedImageContainer childrenProps={[
+	{ src: nanoDefenderDay3, alt: "Screenshot of the game from day 3" },
+]} />
+
+## The Results
+
+Our game ranked 66/99 entries. While we ranked lower than we had hoped in the "theme" and "special object" categories, we we happy to achieve 29th for "gameplay" and 36th for "fun factor!"
+
+A few challenges our team faced:
+
+- This was the first game jam for our team
+- This was the first time using Godot for Jon, Kim, and Hunter
+
+In light of these challenges, I am very proud of what we were able to accomplish. We all enjoyed jamming together and are looking forward to the next Silverpine game jam!
+
+<FlexBasedImageContainer childrenProps={[
+	{ src: nanoDefenderGameplay1, alt: "Screenshot from the final game" },
+	{ src: nanoDefenderGameplay2, alt: "Screenshot from the final game" },
+	{ src: nanoDefenderGameplay3, alt: "Screenshot from the final game" },
+]} />

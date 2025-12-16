@@ -1,0 +1,16 @@
+---
+import type { ComponentProps } from 'astro/types';
+import FlexBasedImage from '@components/FlexBasedImage.astro';
+
+type PropsType = {
+	childrenProps: ComponentProps<typeof FlexBasedImage>[];
+}
+
+const { childrenProps, ...props } = (Astro.props as PropsType)
+---
+
+<div {...(props as any)} style="display:flex;gap:var(--spacing)">
+	{childrenProps.map(childProps => (
+		<FlexBasedImage {...childProps} />
+	))}
+</div>

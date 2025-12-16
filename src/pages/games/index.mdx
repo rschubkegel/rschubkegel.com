@@ -5,7 +5,6 @@ description: "Video games that I've developed."
 ---
 
 import { Image } from 'astro:assets'
-import FlexBasedImage from '@components/FlexBasedImage.astro'
 import IconExternalLink from '@components/IconExternalLink.astro'
 import ProjectHeader from '@components/ProjectHeader.astro'
 
@@ -57,26 +56,38 @@ Our latest release, _The Memory Machine_, is available on Steam. Go wishlist it 
 
 import BBBImage from '@assets/images/games/BBB.png'
 import finalIdeaImage from '@assets/images/games/out-of-thyme/final-idea.png'
+import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 import gameplayImage from '@assets/images/games/out-of-thyme/gameplay-screenshot.png'
+import nanoDefenderGameplay1 from '@assets/images/games/nano-defender/gameplay-1.png'
+import nanoDefenderGameplay2 from '@assets/images/games/nano-defender/gameplay-2.png'
+import nanoDefenderGameplay3 from '@assets/images/games/nano-defender/gameplay-3.png'
 import priestImage from '@assets/images/games/priest-1.jpg'
 
 I have entered several game jams, which limit the amount of time you are committed to working on a game. It's a helpful practice in project management and prioritization, but it's also invigorating to overload my creativity under the pressure of a time limit.
 
 I have entered several game jams on my own, including the worldwide [Ludum Dare](https://ldjam.com/) where my game, [Judgement of Priest](https://supergobo.itch.io/judgement-of-a-priest?secret=y8iE62XuowSe3dRCjaB3YANzE8), placed 27th for audio and 39th for graphics out of 761 competition entries.
 
-<div style="display:flex;gap:var(--spacing)">
-  <FlexBasedImage src={priestImage} alt="Screenshot from Judgement of Priest" />
-  <FlexBasedImage src={BBBImage} alt="Screenshot from Bok Bok Beats" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: priestImage, alt: "Screenshot from Judgement of Priest" },
+	{ src: BBBImage, alt: "Screenshot from Bok Bok Beats" },
+]} />
 
-Most recently I made an arcade game made for the weekend-long [Mini Jame Gam #20](https://itch.io/jam/mini-jame-gam-20). The theme was **out of time** and must include the "special object," an **organ** (the musical instrument). Out of 47 entries _Out of Thyme_ was ranked 2nd overall, and was the highest ranking solo entry.
+One of my favorite solo game jams was the weekend-long [Mini Jame Gam #20](https://itch.io/jam/mini-jame-gam-20). The theme was **out of time** and must include the "special object," an **organ** (the musical instrument). Out of 47 entries _Out of Thyme_ was ranked 2nd overall, and was the highest ranking solo entry.
 
-<div style="display:flex;gap:var(--spacing)">
-	<FlexBasedImage src={finalIdeaImage} alt="The sketch that inspired the gameplay" class="invert-when-light" />
-	<FlexBasedImage src={gameplayImage} alt="Screenshot of the final game" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: finalIdeaImage, alt: "The sketch that inspired the gameplay", class: "invert-when-light" },
+	{ src: gameplayImage, alt: "Screenshot of the final game" },
+]} />
 
-Make sure to [play the game](https://supergobo.itch.io/out-of-thyme) or read about my development process in the [post-mortem](/games/out-of-thyme).
+Make sure to [play the game](https://supergobo.itch.io/out-of-thyme) or read about my development process in the [post-mortem](/blog/out-of-thyme)!
+
+I also participated in a team game jam with my coworkers from [Silverpine](https://silverpine.com/): [Mini Game Jam #49](https://itch.io/jam/mini-jame-gam-49). The theme was **explode** and must include the "special object," a **box**. We made [Nano Defender](https://supergobo.itch.io/nano-defender), an arcade game where you play as a nano-sized defender fighting off bacteria. It was a fun experience working with my coworkers and we were able to achieve a respectable ranking.
+
+<FlexBasedImageContainer childrenProps={[
+	{ src: nanoDefenderGameplay1, alt: "Screenshot from the final game" },
+	{ src: nanoDefenderGameplay2, alt: "Screenshot from the final game" },
+	{ src: nanoDefenderGameplay3, alt: "Screenshot from the final game" },
+]} />
 
 <ProjectHeader>
 	## Earth Defense
@@ -94,7 +105,7 @@ Earth Defense was one of the earliest games I finished. It was originally made i
 
 The game is available to play online or download for Windows on [Itch.io](https://supergobo.itch.io/earth-defense).
 
-<div style="display:flex;gap:var(--spacing)">
-  <FlexBasedImage src={screenshot2} alt="Screenshot of level selection in Earth Defense" />
-  <FlexBasedImage src={screenshot1} alt="Screenshot of gameplay in Earth Defense" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: screenshot2, alt: "Screenshot of level selection in Earth Defense" },
+	{ src: screenshot1, alt: "Screenshot of gameplay in Earth Defense" },
+]} />
