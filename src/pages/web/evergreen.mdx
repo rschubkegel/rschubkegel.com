@@ -11,17 +11,17 @@ import dashboardImage from '@assets/images/silverpine/evergreen/evergreen-1.png'
 import storyImage from '@assets/images/silverpine/evergreen/evergreen-2.png'
 import diagramImage from '@assets/images/silverpine/evergreen/evergreen-3.png'
 import complexDiagramImage from '@assets/images/silverpine/evergreen/evergreen-4.png'
-import FlexBasedImage from '@components/FlexBasedImage.astro'
+import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 
 # {frontmatter.title}
 
 [Evergreen.ink](https://evergreen.ink/) is an interactive fiction writing platform made by [Big River Games](https://bigrivergames.com/). It allows users to write their own [choose-your-own-adventure](https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure) story with an intuitive interface, including a unique story diagram to visualize complex stories.
 
-<div style="display:flex;gap:var(--spacing)">
-<FlexBasedImage src={dashboardImage} alt="Dashboard of user's stories" />
-<FlexBasedImage src={storyImage} alt="Viewing a story in fullscreen" />
-<FlexBasedImage src={diagramImage} alt="Diagram inside story editor" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: dashboardImage, alt: "Dashboard of user's stories" },
+	{ src: storyImage, alt: "Viewing a story in fullscreen" },
+	{ src: diagramImage, alt: "Diagram inside story editor" },
+]} />
 
 I was responsible for the entire frontend including UX design, application programming, CI/CD pipeline for testing and deploying ([Jest](https://jestjs.io/) + [GH Actions](https://github.com/features/actions)), and server ([Caddy](https://caddyserver.com/)) configuration on [EC2](https://aws.amazon.com/ec2/).
 

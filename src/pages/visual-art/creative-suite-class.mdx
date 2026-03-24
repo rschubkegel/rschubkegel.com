@@ -5,6 +5,7 @@ date: 2019-12-15
 description: "The class that introduced me to the fundamentals of design software."
 ---
 
+import { Image } from 'astro:assets'
 import nauticalIconsImage from '@assets/images/school/creative-suite/nautical-icons.png'
 import coastersImage from '@assets/images/school/creative-suite/coasters-3.png'
 import businessCardImage from '@assets/images/school/creative-suite/business-card-1.png'
@@ -35,46 +36,46 @@ import playlist24Image from '@assets/images/school/creative-suite/playlist/24.jp
 import playlist25Image from '@assets/images/school/creative-suite/playlist/25.jpg'
 import playlist26Image from '@assets/images/school/creative-suite/playlist/26.jpg'
 import playlist27Image from '@assets/images/school/creative-suite/playlist/27.jpg'
-import FlexBasedImage from '@components/FlexBasedImage.astro'
+import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 
 # {frontmatter.title}
 
 ARTD 110 taught the fundamentals of Adobe Creative Cloud using Photoshop, Illustrator, and InDesign. This was my first experience designing vector graphics.
 
-<div style="display:flex;gap:var(--spacing)">
-	<FlexBasedImage src={nauticalIconsImage} alt="Nautical icons" />
-	<FlexBasedImage src={coastersImage} alt="Coaster design" />
-	<FlexBasedImage src={businessCardImage} alt="Business card design" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: nauticalIconsImage, alt: "Nautical icons" },
+	{ src: coastersImage, alt: "Coaster design" },
+	{ src: businessCardImage, alt: "Business card design" },
+]} />
 
 One of the projects I'm most proud of was a set of [Spotify playlist covers](https://open.spotify.com/user/213u4fxzegwrbttorspgre2gq/playlists). I have continued adding to the collection after school ended, with a running total of more than 30 images.
 
 <div style="display:grid;gap:var(--border-radius);grid-template-columns:repeat(9,1fr)">
-	<FlexBasedImage src={playlist1Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist2Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist3Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist4Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist5Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist6Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist7Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist8Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist9Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist10Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist11Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist12Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist13Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist14Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist15Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist16Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist17Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist18Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist19Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist20Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist21Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist22Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist23Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist24Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist25Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist26Image} alt="Pink and purple Spotify playlist cover" />
-	<FlexBasedImage src={playlist27Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist1Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist2Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist3Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist4Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist5Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist6Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist7Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist8Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist9Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist10Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist11Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist12Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist13Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist14Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist15Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist16Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist17Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist18Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist19Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist20Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist21Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist22Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist23Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist24Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist25Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist26Image} alt="Pink and purple Spotify playlist cover" />
+	<Image src={playlist27Image} alt="Pink and purple Spotify playlist cover" />
 </div>

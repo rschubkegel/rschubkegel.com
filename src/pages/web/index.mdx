@@ -5,7 +5,7 @@ description: "Website projects that I've developed."
 ---
 
 import { Image } from 'astro:assets'
-import FlexBasedImage from '@components/FlexBasedImage.astro'
+import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 import IconExternalLink from '@components/IconExternalLink.astro'
 import IconInternalLink from '@components/IconInternalLink.astro'
 import ProjectHeader from '@components/ProjectHeader.astro'
@@ -30,10 +30,10 @@ import servicesImage from '@assets/images/silverpine/phoenix/silverpine-services
 
 I migrated the website for [Silverpine](https://silverpine.com/) (my employer) from Squarespace to a custom site built with [Astro](https://astro.build/) & [Vue.js](https://vuejs.org/). In doing so, I was able to decrease the cumulative size of transferred assets from 33 MB to 4 MB (loading the home screen with empty cache). This resulted in noticably faster <abbr title="first contentful paint">FCP</abbr> and <abbr title="time to interactive">TTI</abbr> metrics.
 
-<div style="display:flex;gap:var(--spacing)">
-	<FlexBasedImage src={landingImage} alt="New landing page for silverpine.com" />
-	<FlexBasedImage src={servicesImage} alt="Services page for silverpine.com" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: landingImage, alt: "New landing page for silverpine.com" },
+	{ src: servicesImage, alt: "Services page for silverpine.com" },
+]} />
 
 import evergreenDashboardImage from '@assets/images/silverpine/evergreen/evergreen-1.png'
 import storyImage from '@assets/images/silverpine/evergreen/evergreen-2.png'
@@ -51,11 +51,11 @@ import complexDiagramImage from '@assets/images/silverpine/evergreen/evergreen-4
 
 I built the frontend for [Evergreen.ink](https://evergreen.ink/), an interactive fiction writing platform made by [Big River Games](https://bigrivergames.com/). It allows users to write their own [choose-your-own-adventure](https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure) story with an intuitive interface, including a unique story diagram to visualize complex stories.
 
-<div style="display:flex;gap:var(--spacing)">
-	<FlexBasedImage src={evergreenDashboardImage} alt="Dashboard of user's stories" />
-	<FlexBasedImage src={storyImage} alt="Viewing a story in fullscreen" />
-	<FlexBasedImage src={diagramImage} alt="Diagram inside story editor" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: evergreenDashboardImage, alt: "Dashboard of user's stories" },
+	{ src: storyImage, alt: "Viewing a story in fullscreen" },
+	{ src: diagramImage, alt: "Diagram inside story editor" },
+]} />
 
 <ProjectHeader>
 	## novella2020.com
@@ -88,22 +88,22 @@ import gameOverImage from '@assets/images/silverpine/zday/zday-ios-4.png'
 
 ZDay: Surival Simulator is the first iOS game that I worked on. I was responsible for the web admin, which enables game developers to manage stories, items, users, and more.
 
-<div style="display:flex;gap:var(--spacing)">
-  <FlexBasedImage src={storiesImage} alt="Story management page" />
-  <FlexBasedImage src={resourcesImage} alt="Resource management page" />
-  <FlexBasedImage src={filteredResourcesImage} alt="Resource management page with filtered results" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: storiesImage, alt: "Story management page" },
+	{ src: resourcesImage, alt: "Resource management page" },
+	{ src: filteredResourcesImage, alt: "Resource management page with filtered results" },
+]} />
 
 I also helped with QA by testing stories, giving UI feedback, and reporting bugs.
 
 The app is available for free on [iOS](https://apps.apple.com/us/app/zday-simulator/id6462632835) and [Android](https://play.google.com/store/apps/details?id=com.bigrivergames.zday.simulator).
 
-<div style="display:flex;gap:var(--spacing)">
-  <FlexBasedImage src={waterTowerImage} alt="Water tower story" />
-  <FlexBasedImage src={storySelectionImage} alt="Story selection screen" />
-  <FlexBasedImage src={combatImage} alt="Zombie combat" />
-  <FlexBasedImage src={gameOverImage} alt="Game over screen with survival score" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: waterTowerImage, alt: "Water tower story" },
+	{ src: storySelectionImage, alt: "Story selection screen" },
+	{ src: combatImage, alt: "Zombie combat" },
+	{ src: gameOverImage, alt: "Game over screen with survival score" },
+]} />
 
 import loginImage from '@assets/images/school/voluntime/voluntime1.jpg'
 import voluntimeDashboardImage from '@assets/images/school/voluntime/voluntime2.jpg'
@@ -114,10 +114,10 @@ Voluntime is 1st place winner of [George Fox University's](https://www.georgefox
 
 To learn more, check out the [Code Jam submission](https://devpost.com/software/top-secret-team-3-project-title) or the [GitHub organization](https://github.com/Voluntime).
 
-<div style="display:flex;gap:var(--spacing)">
-	<FlexBasedImage src={loginImage} alt="Login page for Voluntime" />
-	<FlexBasedImage src={voluntimeDashboardImage} alt="A user's volunteer feed" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: loginImage, alt: "Login page for Voluntime" },
+	{ src: voluntimeDashboardImage, alt: "A user's volunteer feed" },
+]} />
 
 import homeImage from '@assets/images/games/zoombingo/home.png'
 import boardImage from '@assets/images/games/zoombingo/board.png'
@@ -129,11 +129,11 @@ What happens when you are a web developer whose family keeps in touch with Zoom 
 
 The app was built with [React](https://reactjs.org/) on the frontend, a [Node.js](https://nodejs.org/en/) server on the backend, [MongoDB](https://www.mongodb.com/) for the database, and [Heroku](https://www.heroku.com/) for deployment.
 
-<div style="display:flex;gap:var(--spacing)">
-  <FlexBasedImage src={homeImage} alt="Home page" />
-  <FlexBasedImage src={boardImage} alt="Bingo board" />
-  <FlexBasedImage src={lobbyImage} alt="Game lobby" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: homeImage, alt: "Home page" },
+	{ src: boardImage, alt: "Bingo board" },
+	{ src: lobbyImage, alt: "Game lobby" },
+]} />
 
 import bagelsImage from "@assets/images/school/web-design/bagels-banner.jpg"
 import styleTileImage from "@assets/images/school/web-design/style-tile.png"
@@ -145,8 +145,8 @@ import virtualCardImage from "@assets/images/school/web-design/virtual-card-sket
 
 The ARTD 270 class from college focused on UI design, page layout, and usability—and it effectively kickstarted my interest in web design.
 
-<div style="display:flex;gap:var(--spacing)">
-	<FlexBasedImage src={bagelsImage} alt="Product page for bagels" />
-	<FlexBasedImage src={styleTileImage} alt="Style tile for a website redesign" />
-	<FlexBasedImage src={virtualCardImage} alt="Sketches for a virtual business card" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: bagelsImage, alt: "Product page for bagels" },
+	{ src: styleTileImage, alt: "Style tile for a website redesign" },
+	{ src: virtualCardImage, alt: "Sketches for a virtual business card" },
+]} />

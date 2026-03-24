@@ -16,37 +16,37 @@ import digitalFireImage from '@assets/images/school/animations/fire.gif'
 import bunnyImage from '@assets/images/school/animations/bunny.gif'
 import montyPythonImage from '@assets/images/school/animations/monty-python.gif'
 import waveImage from '@assets/images/school/animations/wave.gif'
-import FlexBasedImage from '@components/FlexBasedImage.astro'
+import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 
 # {frontmatter.title}
 
 I love bringing drawings to life through animation. Since it takes so much time, the only chance I've had to create the "illusion of life" has been for school credit.
 
-<div style="display:flex;gap:var(--spacing);margin-top:var(--spacing)">
-	<FlexBasedImage src={walkImage} alt="Hand-drawn walk cycle" />
-	<FlexBasedImage src={zoetropeImage} alt="Zoetrope animation of a paper airplane falling" />
-	<FlexBasedImage src={circleBoogieImage} alt="Digital 2D animation of circle being cut to reveal Edward Scissorhands, then spiders crawl into his face and he morphs into the Jason mask, then the mask tilts to reveal Pennywise, then a red balloon lifts and transforms into the circle from the beginning" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: walkImage, alt: "Hand-drawn walk cycle" },
+	{ src: zoetropeImage, alt: "Zoetrope animation of a paper airplane falling" },
+	{ src: circleBoogieImage, alt: "Digital 2D animation of circle being cut to reveal Edward Scissorhands, then spiders crawl into his face and he morphs into the Jason mask, then the mask tilts to reveal Pennywise, then a red balloon lifts and transforms into the circle from the beginning" },
+]} />
 
 In high school, I took a class taught by a former Disney animator. My rendition of the classic "bouncing ball" animation was featured in a student compilation that placed in the [Walt Disney Family Museum's](https://www.waltdisney.org/) annual animation competition for beginners!
 
-<div style="display:flex;gap:var(--spacing);margin-top:var(--spacing)">
-	<FlexBasedImage src={sixFeetApartImage} alt="Animation made with common household objects of two characters approaching, looking down at six feet caption, and stepping back" />
-	<FlexBasedImage src={jackInTheBoxImage} alt="Digital 2D animation of character walking through play room, being scared by a jack-in-the-box, and tripping on a banana peel" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: sixFeetApartImage, alt: "Animation made with common household objects of two characters approaching, looking down at six feet caption, and stepping back" },
+	{ src: jackInTheBoxImage, alt: "Digital 2D animation of character walking through play room, being scared by a jack-in-the-box, and tripping on a banana peel" },
+]} />
 
 In college, I took an into animation class and 2D animation class, both of which gave me the chance to use professional equipment that I couldn't afford before.
 
-<div style="display:flex;gap:var(--spacing);margin-top:var(--spacing)">
-	<FlexBasedImage src={firePaperImage} alt="Fire animation made from cut construction paper" />
-	<FlexBasedImage src={explosionImage} alt="Digital 2D animation of bottle exploding" />
-	<FlexBasedImage src={digitalFireImage} alt="Digital 2D animation of flickering fire" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: firePaperImage, alt: "Fire animation made from cut construction paper" },
+	{ src: explosionImage, alt: "Digital 2D animation of bottle exploding" },
+	{ src: digitalFireImage, alt: "Digital 2D animation of flickering fire" },
+]} />
 
 If you want to see my most recent animations, check out my [game dev projects](/games).
 
-<div style="display:flex;gap:var(--spacing);margin-top:var(--spacing)">
-	<FlexBasedImage src={bunnyImage} alt="2D digital animation of bunny hopping, eating grass, and being surprised by the gopher who's hair it was eating" />
-	<FlexBasedImage src={montyPythonImage} alt="2D digital animation of angry green character with wavy eyebrows quoting Monty Python" />
-	<FlexBasedImage src={waveImage} alt="2D digital animation of stick person walking by, doing a double-take, and waving" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: bunnyImage, alt: "2D digital animation of bunny hopping, eating grass, and being surprised by the gopher who's hair it was eating" },
+	{ src: montyPythonImage, alt: "2D digital animation of angry green character with wavy eyebrows quoting Monty Python" },
+	{ src: waveImage, alt: "2D digital animation of stick person walking by, doing a double-take, and waving" },
+]} />

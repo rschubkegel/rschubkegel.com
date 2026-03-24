@@ -5,6 +5,7 @@ layout: "@layouts/BaseLayout.astro"
 import ProjectHeader from '@components/ProjectHeader.astro'
 import TheTypingHeader from '@components/TheTypingHeader.astro'
 import FlexBasedImage from '@components/FlexBasedImage.astro'
+import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 import ContributionMap from '@components/ContributionMap.vue'
 
 <TheTypingHeader>Hello world, I'm Rylan</TheTypingHeader>
@@ -37,11 +38,11 @@ import conwayImage from '@assets/images/school/web-dev/conway.jpg'
 
 I am a software developer by trade and I specialize in web development. Aside from [rschubkegel.com](/), I've collected some of the other projects I've worked on.
 
-<div style="display:flex;gap:var(--spacing);margin-top:var(--spacing)">
-	<FlexBasedImage src={landingImage} alt="New landing page for silverpine.com" />
-	<FlexBasedImage src={conwayImage} alt="Conway's Game of Life" />
-	<FlexBasedImage src={complexDiagramImage} alt="Story diagram in evergreen.ink" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: landingImage, alt: "New landing page for silverpine.com" },
+	{ src: conwayImage, alt: "Conway's Game of Life" },
+	{ src: complexDiagramImage, alt: "Story diagram in evergreen.ink" },
+]} />
 
 import brokerBayScreenshot1 from '@assets/images/silverpine/brokerbay/dashboard.png'
 import brokerBayScreenshot2 from '@assets/images/silverpine/brokerbay/showings-loading.png'
@@ -57,11 +58,11 @@ I have become very proficient with [React Native](https://reactnative.dev/) by w
 - Optimizing <abbr title="time to interactive">TTI</abbr> metrics by implementing skeleton loader components
 - Adding frontend data caching using [Tanstack Query](https://tanstack.com/query/latest)
 
-<div style="display:flex;gap:var(--spacing);margin-top:var(--spacing)">
-	<FlexBasedImage src={brokerBayScreenshot1} alt="Screenshot of BrokerBay app on the home screen" />
-	<FlexBasedImage src={brokerBayScreenshot2} alt="Screenshot of BrokerBay app with loading skeletons" />
-	<FlexBasedImage src={brokerBayScreenshot3} alt="Screenshot of BrokerBay app on the listing screen" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: brokerBayScreenshot1, alt: "Screenshot of BrokerBay app on the home screen" },
+	{ src: brokerBayScreenshot2, alt: "Screenshot of BrokerBay app with loading skeletons" },
+	{ src: brokerBayScreenshot3, alt: "Screenshot of BrokerBay app on the listing screen" },
+]} />
 
 <ProjectHeader>
 	## [Teaching](/teaching)
@@ -82,10 +83,10 @@ import prototypeImage from '@assets/images/school/servant-engineering/prototype.
 
 I don't usually touch hardware with a ten foot pole, but I worked on a couple of projects in school that made me feel like a "real" engineer.
 
-<div style="display:flex;gap:var(--spacing);margin-bottom:var(--spacing)">
-	<FlexBasedImage src={cubeImage} alt="A cube in mixed reality" />
-	<FlexBasedImage src={prototypeImage} alt="Early physical prototype" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: cubeImage, alt: "A cube in mixed reality" },
+	{ src: prototypeImage, alt: "Early physical prototype" },
+]} />
 
 import outOfThymeGameplayImage from '@assets/images/games/out-of-thyme/gameplay-screenshot.png'
 import screenshot1 from '@assets/images/games/ED.png'
@@ -112,11 +113,11 @@ import firePaperImage from '@assets/images/school/animations/fire-paper.gif'
 
 My longest-standing hobby is visual art. This is a small collection of my paintings, digital designs, and animations.
 
-<div style="display:flex;gap:var(--spacing);margin-top:var(--spacing)">
-	<FlexBasedImage src={frenchPressImage} alt="French Press painting" />
-	<FlexBasedImage src={twentySeventhLetterImage} alt="Twenty Seventh Letter graphic" />
-	<FlexBasedImage src={firePaperImage} alt="Fire animation made from cut construction paper" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: frenchPressImage, alt: "French Press painting" },
+	{ src: twentySeventhLetterImage, alt: "Twenty Seventh Letter graphic" },
+	{ src: firePaperImage, alt: "Fire animation made from cut construction paper" },
+]} />
 
 <ProjectHeader>
 	## [Music Production](/music)

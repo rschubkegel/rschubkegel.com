@@ -4,7 +4,9 @@ title: Visual Art
 description: "Paintings, graphic design, animations; the lifeblood of my creative endevours."
 ---
 
+import { Image } from 'astro:assets'
 import FlexBasedImage from '@components/FlexBasedImage.astro'
+import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 import ProjectHeader from '@components/ProjectHeader.astro'
 
 # {frontmatter.title}
@@ -27,12 +29,12 @@ import frenchPressImage from '@assets/images/paintings/french-press-insta.jpg'
 
 One of my favorite forms of R&R is traditional painting. I've tried watercolor and gouache, but my favorite medium is acrylic. _Occasionally_, I share my work on [Instagram](https://www.instagram.com/theryguydraws/).
 
-<FlexBasedImage src={kulshanMountainImage} alt="Kulshan Mountain painting" />
+<Image src={kulshanMountainImage} alt="Kulshan Mountain painting" style={{ marginBottom: 'var(--spacing)' }} />
 
-<div style="display:flex;gap:var(--spacing);margin-top:var(--spacing)">
-	<FlexBasedImage src={orangesImage} alt="Oranges painting" />
-	<FlexBasedImage src={frenchPressImage} alt="French Press painting" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: orangesImage, alt: "Oranges painting" },
+	{ src: frenchPressImage, alt: "French Press painting" },
+]} />
 
 import twentySeventhLetterImage from '@assets/images/school/typography/twenty-seventh-letter.jpg'
 import anatomy1Image from '@assets/images/school/typography/anatomy/1.png'
@@ -48,10 +50,10 @@ A college class that explored type anatomy, page layout, hierarchy, and more.
 
 <div style="display:flex;gap:var(--spacing);margin-top:var(--spacing)">
 	<div style="display:grid;gap:var(--spacing);grid-template-columns:repeat(2,1fr);flex-basis:100%">
-		<FlexBasedImage src={anatomy2Image} alt="Design based on type anatomy" />
-		<FlexBasedImage src={anatomy1Image} alt="Design based on type anatomy" />
-		<FlexBasedImage src={anatomy4Image} alt="Design based on type anatomy" />
-		<FlexBasedImage src={anatomy8Image} alt="Design based on type anatomy" />
+		<Image src={anatomy2Image} alt="Design based on type anatomy" />
+		<Image src={anatomy1Image} alt="Design based on type anatomy" />
+		<Image src={anatomy4Image} alt="Design based on type anatomy" />
+		<Image src={anatomy8Image} alt="Design based on type anatomy" />
 	</div>
 	<FlexBasedImage src={twentySeventhLetterImage} alt="Twenty Seventh Letter graphic" />
 </div>
@@ -78,15 +80,15 @@ The college class that introduced me to the fundamentals of design software.
 	<FlexBasedImage src={coastersImage} alt="Coaster design" />
 	<FlexBasedImage src={nauticalIconsImage} alt="Nautical icons" />
 	<div style="display:grid;gap:var(--border-radius);grid-template-columns:repeat(3,1fr);flex-basis:100%">
-		<FlexBasedImage src={playlist1Image} alt="Pink and purple Spotify playlist cover" />
-		<FlexBasedImage src={playlist2Image} alt="Pink and purple Spotify playlist cover" />
-		<FlexBasedImage src={playlist3Image} alt="Pink and purple Spotify playlist cover" />
-		<FlexBasedImage src={playlist4Image} alt="Pink and purple Spotify playlist cover" />
-		<FlexBasedImage src={playlist5Image} alt="Pink and purple Spotify playlist cover" />
-		<FlexBasedImage src={playlist6Image} alt="Pink and purple Spotify playlist cover" />
-		<FlexBasedImage src={playlist7Image} alt="Pink and purple Spotify playlist cover" />
-		<FlexBasedImage src={playlist8Image} alt="Pink and purple Spotify playlist cover" />
-		<FlexBasedImage src={playlist9Image} alt="Pink and purple Spotify playlist cover" />
+		<Image src={playlist1Image} alt="Pink and purple Spotify playlist cover" />
+		<Image src={playlist2Image} alt="Pink and purple Spotify playlist cover" />
+		<Image src={playlist3Image} alt="Pink and purple Spotify playlist cover" />
+		<Image src={playlist4Image} alt="Pink and purple Spotify playlist cover" />
+		<Image src={playlist5Image} alt="Pink and purple Spotify playlist cover" />
+		<Image src={playlist6Image} alt="Pink and purple Spotify playlist cover" />
+		<Image src={playlist7Image} alt="Pink and purple Spotify playlist cover" />
+		<Image src={playlist8Image} alt="Pink and purple Spotify playlist cover" />
+		<Image src={playlist9Image} alt="Pink and purple Spotify playlist cover" />
 	</div>
 </div>
 
@@ -100,8 +102,8 @@ import montyPythonImage from '@assets/images/school/animations/monty-python.gif'
 
 I love bringing drawings to life through animation. Some of my favorite animations are compiled here for you enjoyment!
 
-<div style="display:flex;gap:var(--spacing);margin-top:var(--spacing)">
-	<FlexBasedImage src={walkImage} alt="Hand-drawn walk cycle" />
-	<FlexBasedImage src={firePaperImage} alt="Fire animation made from cut construction paper" />
-	<FlexBasedImage src={montyPythonImage} alt="2D digital animation of angry green character with wavy eyebrows quoting Monty Python" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: walkImage, alt: "Hand-drawn walk cycle" },
+	{ src: firePaperImage, alt: "Fire animation made from cut construction paper" },
+	{ src: montyPythonImage, alt: "2D digital animation of angry green character with wavy eyebrows quoting Monty Python" },
+]} />

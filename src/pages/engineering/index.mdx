@@ -4,8 +4,9 @@ title: Engineering
 description: "Projects that touch hardware."
 ---
 
+import { Image } from 'astro:assets'
 import ProjectHeader from '@components/ProjectHeader.astro'
-import FlexBasedImage from '@components/FlexBasedImage.astro'
+import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 import IconExternalLink from '@components/IconExternalLink.astro'
 import IconInternalLink from '@components/IconInternalLink.astro'
 
@@ -30,12 +31,12 @@ import wireframesImage from '@assets/images/school/senior-design/wireframes.jpg'
 
 I was the team manager of 6 students working with [Daimler Trucks of North America](https://northamerica.daimlertruck.com/) to research the utility of Microsoft's [Hololens 2](https://www.microsoft.com/en-us/hololens/hardware) for Daimler's servicing intake process. We developed small-scale text input applications in mixed reality using [Unity](https://unity.com/) and Microsoft's Mixed Reality Toolkit. After having users test these applications we were able derive insights about the unique user experience of the Hololens headset, providing our client with valuable information about the efficacy of MR in their truck servicing process.
 
-<FlexBasedImage src={cubeImage} alt="A cube in mixed reality" />
+<Image src={cubeImage} alt="A cube in mixed reality" />
 
-<div style="display:flex;gap:var(--spacing);margin-top:var(--spacing)">
-	<FlexBasedImage src={userFlowImage} alt="User flow diagram" />
-	<FlexBasedImage src={wireframesImage} alt="Wireframe of user interface" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: userFlowImage, alt: "User flow diagram" },
+	{ src: wireframesImage, alt: "Wireframe of user interface" },
+]} />
 
 import prototypeImage from '@assets/images/school/servant-engineering/prototype.png'
 import detectionImage from '@assets/images/school/servant-engineering/detection.png'
@@ -51,7 +52,7 @@ import detectionImage from '@assets/images/school/servant-engineering/detection.
 
 Our team explored the design challenge of helping visually impaired individuals navigate the world around them. As part of our human-centered design approach to tackling this challenge, we developed a high-level user story to frame our design efforts: “As a visually impaired person, I want to identify common objects and read text and symbols on signs as I navigate my environment.” [Read more here](https://cs.georgefox.edu/about/research/computer-vision-for-the-visually-impaired/).
 
-<div style="display:flex;gap:var(--spacing);margin-bottom:var(--spacing)">
-	<FlexBasedImage src={prototypeImage} alt="Early physical prototype" />
-	<FlexBasedImage src={detectionImage} alt="Objects detected with computer vision" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: prototypeImage, alt: "Early physical prototype" },
+	{ src: detectionImage, alt: "Objects detected with computer vision" },
+]} />

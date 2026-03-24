@@ -12,22 +12,22 @@ import adminEmployeesImage from '@assets/images/silverpine/phoenix/web-admin-emp
 import adminHeaderImage from '@assets/images/silverpine/phoenix/web-admin-header.png'
 import adminLoginImage from '@assets/images/silverpine/phoenix/web-admin-login.png'
 import adminLogosImage from '@assets/images/silverpine/phoenix/web-admin-logos.png'
-import FlexBasedImage from '@components/FlexBasedImage.astro'
+import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 
 # {frontmatter.title}
 
 I migrated the website for [Silverpine](https://www.silverpine.com/) (my employer) from Squarespace to a custom site built with [Astro](https://astro.build/) & [Vue.js](https://vuejs.org/). In doing so, I was able to decrease the cumulative size of transferred assets from 33 MB to 4 MB (loading the home screen with empty cache). This resulted in noticably faster <abbr title="first contentful paint">FCP</abbr> and <abbr title="time to interactive">TTI</abbr> metrics.
 
-<div style="display:flex;gap:var(--spacing)">
-<FlexBasedImage src={landingImage} alt="New landing page for silverpine.com" />
-<FlexBasedImage src={servicesImage} alt="Services page for silverpine.com" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: landingImage, alt: "New landing page for silverpine.com" },
+	{ src: servicesImage, alt: "Services page for silverpine.com" },
+]} />
 
 To replicate the <abbr title="content management system">CMS</abbr> of Squarespace, I also built a full-stack admin web app that allows company employees to update dynamic content on the site. The company logo can be configured to change depending on the date, and employee names, roles, and profiles can be easily updated. The app was built with [Node.js](https://nodejs.org) & [Express](https://expressjs.com/) on the backend and [Vite](https://vitejs.dev/) & [Vue.js](https://vuejs.org/) on the frontend.
 
-<div style="display:flex;gap:var(--spacing)">
-<FlexBasedImage src={adminLoginImage} alt="Admin login page" />
-<FlexBasedImage src={adminHeaderImage} alt="Admin header component" />
-<FlexBasedImage src={adminEmployeesImage} alt="Admin employees page" />
-<FlexBasedImage src={adminLogosImage} alt="Admin logos page" />
-</div>
+<FlexBasedImageContainer childrenProps={[
+	{ src: adminLoginImage, alt: "Admin login page" },
+	{ src: adminHeaderImage, alt: "Admin header component" },
+	{ src: adminEmployeesImage, alt: "Admin employees page" },
+	{ src: adminLogosImage, alt: "Admin logos page" },
+]} />
