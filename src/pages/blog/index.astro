@@ -13,8 +13,8 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.data.published).getTime()
 
   <div class="blog-posts">
     {sortedPosts.map((post) => (
-      <a href={`/blog/${post.slug}`}>
-        <article class="blog-post" onclick={`window.location.href = '/blog/${post.slug}'`}>
+      <a href={`/blog/${post.id}`}>
+        <article class="blog-post" onclick={`window.location.href = '/blog/${post.id}'`}>
           <h2>{post.data.title}</h2>
           <p class="post-meta">
             Published on {new Date(post.data.published).toLocaleDateString('en-US', { 

@@ -13,8 +13,8 @@ const sortedSlides = allSlides.filter(slide => !slide.data.hidden).sort((a, b) =
 
   <div class="slides-list">
     {sortedSlides.map((slide) => (
-      <a href={`/slides/${slide.slug}`}>
-        <article class="slide-summary" onclick={`window.location.href = '/slides/${slide.slug}'`}>
+      <a href={`/slides/${slide.id}`}>
+        <article class="slide-summary" onclick={`window.location.href = '/slides/${slide.id}'`}>
           <h2>{slide.data.title}</h2>
           <p class="slide-meta">
             Published on {new Date(slide.data.published).toLocaleDateString('en-US', { 
@@ -39,4 +39,4 @@ const sortedSlides = allSlides.filter(slide => !slide.data.hidden).sort((a, b) =
       </div>
     )}
   </div>
-</SlideshowLayout>
+</BaseLayout>

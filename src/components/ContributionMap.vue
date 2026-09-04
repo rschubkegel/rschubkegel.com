@@ -48,6 +48,7 @@ const overlayHidden = ref(false);
 // GraphQL client setup
 const client = createClient({
 	url: 'https://api.github.com/graphql',
+	preferGetMethod: false,
 	fetchOptions: () => {
 		return {
 			headers: {
