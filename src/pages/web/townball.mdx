@@ -1,0 +1,24 @@
+---
+layout: "@layouts/ArticleLayout.astro"
+title: 21ctownball.com
+date: 2024-02-24
+link: https://21ctownball.com/
+description: "Website for Twenty-first Century Townball, a historically rooted game of bat-and-ball."
+---
+
+import homeImage from '@assets/images/web/townball/home.png'
+import rulesImage from '@assets/images/web/townball/rules.png'
+import historyImage from '@assets/images/web/townball/history.png'
+import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
+
+# {frontmatter.title}
+
+[Twenty-first Century Townball](https://21ctownball.com/) is a bat-and-ball game based on the version of base ball played in Massachusetts before the Civil War. I play and love the game, so I volunteered to design and build its website.
+
+<FlexBasedImageContainer childrenProps={[
+	{ src: homeImage, alt: "Home page" },
+	{ src: rulesImage, alt: "Rules page" },
+	{ src: historyImage, alt: "History page" },
+]} />
+
+The site is built with [Astro](https://astro.build/). Alongside the rules, history, and media pages, I created a Git-powered content management system that converts CSV files into stats pages, so game records can be updated by committing a spreadsheet rather than editing code.
