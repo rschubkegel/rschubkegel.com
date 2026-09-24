@@ -1,14 +1,16 @@
 ---
 layout: "@layouts/ArticleLayout.astro"
-title: 21ctownball.com
+title: 21st Century Townball
 date: 2024-02-24
 link: https://21ctownball.com/
 description: "Website for Twenty-first Century Townball, a historically rooted game of bat-and-ball."
 ---
 
+import { Image } from 'astro:assets'
 import homeImage from '@assets/images/web/townball/home.png'
 import rulesImage from '@assets/images/web/townball/rules.png'
 import historyImage from '@assets/images/web/townball/history.png'
+import statsImage from '@assets/images/web/townball/stats.png'
 import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 
 # {frontmatter.title}
@@ -22,3 +24,7 @@ import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 ]} />
 
 The site is built with [Astro](https://astro.build/). Alongside the rules, history, and media pages, I created a Git-powered content management system that converts CSV files into stats pages, so game records can be updated by committing a spreadsheet rather than editing code.
+
+<Image src={statsImage} alt="Player stats page for Chuck Jones" />
+
+The project is [open source](https://github.com/21ctownball/townball-website) and uses GitHub issues and projects to plan contributions.
