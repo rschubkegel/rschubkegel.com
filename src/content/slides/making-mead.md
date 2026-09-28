@@ -120,6 +120,14 @@ Yeast nutrients
 
 Hydrometer reading
 
+<div class="row">
+
+![hydrometer floating in mead](/images/slides/mead/hydrometer_1.jpg) <!-- .element class="img-tall" -->
+
+![close-up of hydrometer reading](/images/slides/mead/hydrometer_2.jpg) <!-- .element class="img-tall" -->
+
+</div>
+
 ---
 
 Degassing
