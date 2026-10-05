@@ -190,3 +190,5 @@ Back-sweetening
 ---
 
 Aging
+
+![corner shelves filled with bottles of aging mead](/images/slides/mead/aging.jpg) <!-- .element class="img-tall" -->
