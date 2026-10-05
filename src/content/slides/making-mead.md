@@ -118,6 +118,12 @@ Yeast nutrients
 
 ---
 
+Ingredients
+
+![glass jar with mesh bag, wildflower honey, frozen strawberries, and kitchen scale](/images/slides/mead/ingredients.jpg) <!-- .element class="img-tall" -->
+
+---
+
 Hydrometer reading
 
 <div class="row">
