@@ -124,6 +124,12 @@ Ingredients
 
 ---
 
+![top-down view of jar with strawberries and a serrano pepper in fermenting mead](/images/slides/mead/strawberry_serrano.jpg) <!-- .element class="img-tall" -->
+
+NOTE: strawberry and serrano
+
+---
+
 Hydrometer reading
 
 <div class="row">
