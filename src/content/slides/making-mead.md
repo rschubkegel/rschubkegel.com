@@ -152,6 +152,10 @@ NOTE:
 
 ---
 
+![foam and fruit sediment in mesh bag at top of jar after degassing](/images/slides/mead/degassing_foam.jpg) <!-- .element class="img-tall" -->
+
+---
+
 Racking
 
 ![before racking process](/images/slides/mead/racking_1.jpg) <!-- .element class="img-tall" -->
