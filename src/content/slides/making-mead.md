@@ -12,7 +12,12 @@ tags: ["mead", "brewing", "hobby", "fermentation"]
   .txt-red { color: Crimson; }
   .txt-green { color: LimeGreen; }
   .txt-blue { color: DodgerBlue; }
-  .img-tall { width: auto; height: 400px; }
+  .reveal section img { margin: 0; }
+  .img-tall { width: auto; height: 590px; max-width: 100%; object-fit: contain; }
+  .row p { margin: 0 .25em; }
+  .img-full { width: auto; height: 700px; max-width: 100%; object-fit: contain; }
+  .reveal p:has(> .img-full) { margin: 0; line-height: 0; }
+  .img-title { width: auto; height: 520px; }
   .img-mid { width: auto; height: 350px; }
   .img-small { width: auto; height: 300px; }
   .img-wide { width: 400px; height: auto; }
@@ -22,7 +27,7 @@ tags: ["mead", "brewing", "hobby", "fermentation"]
 
 # Making <span class="txt-gold">Mead</span>
 
-![Rylan and Isaiah first batch of mead](/images/slides/mead/first_batch.jpg) <!-- .element class="img-tall" -->
+![Rylan and Isaiah first batch of mead](/images/slides/mead/first_batch.jpg) <!-- .element class="img-title" -->
 
 ---
 
@@ -124,7 +129,7 @@ Ingredients
 
 ---
 
-![top-down view of jar with strawberries and a serrano pepper in fermenting mead](/images/slides/mead/strawberry_serrano.jpg) <!-- .element class="img-tall" -->
+![top-down view of jar with strawberries and a serrano pepper in fermenting mead](/images/slides/mead/strawberry_serrano.jpg) <!-- .element class="img-full" -->
 
 NOTE: strawberry and serrano
 
@@ -152,7 +157,7 @@ NOTE:
 
 ---
 
-![foam and fruit sediment in mesh bag at top of jar after degassing](/images/slides/mead/degassing_foam.jpg) <!-- .element class="img-tall" -->
+![foam and fruit sediment in mesh bag at top of jar after degassing](/images/slides/mead/degassing_foam.jpg) <!-- .element class="img-full" -->
 
 ---
 
@@ -163,11 +168,11 @@ Racking
 ---
 
 
-![after racking process](/images/slides/mead/racking_2.jpg) <!-- .element class="img-tall" -->
+![after racking process](/images/slides/mead/racking_2.jpg) <!-- .element class="img-full" -->
 
 ---
 
-![racked mead next to emptied jar with leftover sediment and fruit bag](/images/slides/mead/racking_3.jpg) <!-- .element class="img-tall" -->
+![racked mead next to emptied jar with leftover sediment and fruit bag](/images/slides/mead/racking_3.jpg) <!-- .element class="img-full" -->
 
 ---
 

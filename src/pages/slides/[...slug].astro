@@ -19,7 +19,7 @@ const { slide } = Astro.props
   import Reveal from "reveal.js"
   import Markdown from "reveal.js/plugin/markdown"
   import Notes from "reveal.js/plugin/notes"
-  new Reveal({ plugins: [Markdown, Notes] }).initialize()
+  new Reveal({ margin: 0, plugins: [Markdown, Notes] }).initialize()
 </script>
 
 <SlideshowLayout title={slide.data.title} description={slide.data.description}>
