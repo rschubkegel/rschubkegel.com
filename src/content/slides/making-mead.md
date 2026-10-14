@@ -167,6 +167,10 @@ Racking
 
 ---
 
+![racked mead next to emptied jar with leftover sediment and fruit bag](/images/slides/mead/racking_3.jpg) <!-- .element class="img-tall" -->
+
+---
+
 Racking improves clarity
 
 ![comparison of mead clarity](/images/slides/mead/clarity.jpg) <!-- .element class="img-tall" -->
