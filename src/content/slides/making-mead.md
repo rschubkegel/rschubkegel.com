@@ -1,7 +1,7 @@
 ---
 title: "Making Mead"
 description: "A short introduction to the hobby of making mead."
-published: "2026-09-21"
+published: "2026-10-13"
 author: "Rylan Schubkegel"
 tags: ["mead", "brewing", "hobby", "fermentation"]
 ---
@@ -194,14 +194,32 @@ NOTES:
 
 ---
 
+Tracking
+
+![screenshot of Obsidian mead notes compiled by Dataview plugin](/images/slides/mead/obsidian-readme.png) <!-- .element class="img-tall" -->
+
+---
+
+![screenshot of Obsidian mead notes for V14 batch](/images/slides/mead/obsidian-v14.png) <!-- .element class="img-full" -->
+
+---
+
 Pasteurizing
+
+![GIF of boiling water](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGk5MGp0c240OGs1a3MxMjV2aTRhand4bTd3d3NzNHQyN21zZm92bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9UPuJPbiHwo8/giphy.gif) <!-- .element class="img-tall" -->
 
 ---
 
 Back-sweetening
+
+![GIF of Winnie the Pooh gorging himself on honey](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHNqbnd0N291eGM2aHpyMDZyNDZhZjloNTFodjV2Y3Yzb2JmdHZoMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11d4XJQ1Oo2Ik8/giphy.gif) <!-- .element class="img-tall" -->
 
 ---
 
 Aging
 
 ![corner shelves filled with bottles of aging mead](/images/slides/mead/aging.jpg) <!-- .element class="img-tall" -->
+
+---
+
+![GIF of "That's all Folks!" Looney Tunes ending](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzBwb2dveXc4NzIwZHdrNDkydzdsZXVyZW5teXV3aW9pcWx1NjAyaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lD76yTC5zxZPG/giphy.gif) <!-- .element class="img-tall" -->
