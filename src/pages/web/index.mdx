@@ -16,8 +16,9 @@ Website development has been the biggest part of my career so far and I am now i
 
 ---
 
-import landingImage from '@assets/images/silverpine/phoenix/silverpine-landing.gif'
-import servicesImage from '@assets/images/silverpine/phoenix/silverpine-services.gif'
+import rebrandScrollingTextImage from '@assets/images/silverpine/phoenix/rebrand-scrolling-text.png'
+import rebrandMobileImage from '@assets/images/silverpine/phoenix/rebrand-mobile.png'
+import rebrandGradientImage from '@assets/images/silverpine/phoenix/rebrand-gradient.png'
 
 <ProjectHeader>
 	## [Silverpine](/web/silverpine)
@@ -28,11 +29,12 @@ import servicesImage from '@assets/images/silverpine/phoenix/silverpine-services
 	</Fragment>
 </ProjectHeader>
 
-I migrated the website for [Silverpine](https://silverpine.com/) (my employer) from Squarespace to a custom site built with [Astro](https://astro.build/) & [Vue.js](https://vuejs.org/). In doing so, I was able to decrease the cumulative size of transferred assets from 33 MB to 4 MB (loading the home screen with empty cache). This resulted in noticably faster <abbr title="first contentful paint">FCP</abbr> and <abbr title="time to interactive">TTI</abbr> metrics.
+I built (and re-built) the website for [Silverpine](https://silverpine.com/) with [Astro](https://astro.build/), [Vue.js](https://vuejs.org/), and [GSAP](https://gsap.com/).
 
 <FlexBasedImageContainer childrenProps={[
-	{ src: landingImage, alt: "New landing page for silverpine.com" },
-	{ src: servicesImage, alt: "Services page for silverpine.com" },
+	{ src: rebrandScrollingTextImage, alt: "Scrolling text animation" },
+	{ src: rebrandMobileImage, alt: "Re-branded website on mobile" },
+	{ src: rebrandGradientImage, alt: "Custom gradient editor" },
 ]} />
 
 import townballHomeImage from '@assets/images/web/townball/home.png'
@@ -80,11 +82,6 @@ I built the frontend for [Evergreen.ink](https://evergreen.ink/), an interactive
 
 <ProjectHeader>
 	## Novella
-	<Fragment slot="link">
-		<a href="https://novella2020.com/" target="_blank" title="View website">
-			<IconExternalLink />
-		</a>
-	</Fragment>
 </ProjectHeader>
 
 [Novella](https://novella2020.com/) tells a _story_ with every sneaker by designing each pair after a unique artisan. I built the entire frontend using [Vue](https://vuejs.org/), [Liquid](https://shopify.dev/docs/api/liquid), and [GreenSock](https://greensock.com/).

@@ -1,14 +1,19 @@
 ---
 layout: "@layouts/ArticleLayout.astro"
 title: Silverpine
-date: 2024-07-09
+date: 2026-22-05
 link: https://www.silverpine.com/
 description: "Migrating the website for Silverpine from Squarespace to a custom site built with Astro & Vue."
 ---
 
+import { Image } from 'astro:assets'
 import landingImage from '@assets/images/silverpine/phoenix/silverpine-landing.gif'
 import servicesImage from '@assets/images/silverpine/phoenix/silverpine-services.gif'
 import adminEmployeesImage from '@assets/images/silverpine/phoenix/web-admin-employees.png'
+import rebrandLandingImage from '@assets/images/silverpine/phoenix/rebrand-landing.png'
+import rebrandScrollingTextImage from '@assets/images/silverpine/phoenix/rebrand-scrolling-text.png'
+import rebrandGradientImage from '@assets/images/silverpine/phoenix/rebrand-gradient.png'
+import rebrandMobileImage from '@assets/images/silverpine/phoenix/rebrand-mobile.png'
 import adminHeaderImage from '@assets/images/silverpine/phoenix/web-admin-header.png'
 import adminLoginImage from '@assets/images/silverpine/phoenix/web-admin-login.png'
 import adminLogosImage from '@assets/images/silverpine/phoenix/web-admin-logos.png'
@@ -16,12 +21,28 @@ import FlexBasedImageContainer from '@components/FlexBasedImageContainer.astro'
 
 # {frontmatter.title}
 
-I migrated the website for [Silverpine](https://www.silverpine.com/) (my employer) from Squarespace to a custom site built with [Astro](https://astro.build/) & [Vue.js](https://vuejs.org/). In doing so, I was able to decrease the cumulative size of transferred assets from 33 MB to 4 MB (loading the home screen with empty cache). This resulted in noticably faster <abbr title="first contentful paint">FCP</abbr> and <abbr title="time to interactive">TTI</abbr> metrics.
+In 2026 I worked with a designer and another developer to rebrand the [Silverpine](https://www.silverpine.com/) website. The re-brand features interactive animations, performant web shaders, and optimized assets.
+
+<FlexBasedImageContainer childrenProps={[
+	{ src: rebrandLandingImage, alt: "Re-branded landing page for silverpine.com" },
+	{ src: rebrandScrollingTextImage, alt: "Scrolling text animation" },
+	{ src: rebrandMobileImage, alt: "Re-branded website on mobile" },
+]} />
+
+I leveraged AI during development by crafting an [AGENTS.md](https://agents.md/) file to tailor the behavior of my coding agents. As a result, my code velocity increased so much that I was able to implement features that were not in the project design! My favorite addition was the custom gradient editor that allowed our designer to get real-time feedback on the background gradient.
+
+<Image src={rebrandGradientImage} alt="Custom gradient editor" />
+
+---
+
+Two years earlier, I migrated the website for [Silverpine](https://www.silverpine.com/) (my employer) from Squarespace to a custom site built with [Astro](https://astro.build/) & [Vue.js](https://vuejs.org/). In doing so, I was able to decrease the cumulative size of transferred assets from 33 MB to 4 MB (loading the home screen with empty cache). This resulted in noticably faster <abbr title="first contentful paint">FCP</abbr> and <abbr title="time to interactive">TTI</abbr> metrics.
 
 <FlexBasedImageContainer childrenProps={[
 	{ src: landingImage, alt: "New landing page for silverpine.com" },
 	{ src: servicesImage, alt: "Services page for silverpine.com" },
 ]} />
+
+---
 
 To replicate the <abbr title="content management system">CMS</abbr> of Squarespace, I also built a full-stack admin web app that allows company employees to update dynamic content on the site. The company logo can be configured to change depending on the date, and employee names, roles, and profiles can be easily updated. The app was built with [Node.js](https://nodejs.org) & [Express](https://expressjs.com/) on the backend and [Vite](https://vitejs.dev/) & [Vue.js](https://vuejs.org/) on the frontend.
 
