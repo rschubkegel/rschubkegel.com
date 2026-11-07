@@ -8,25 +8,47 @@ const imageModules = import.meta.glob<ImageMetadata>(
 	{ eager: true, import: 'default' },
 )
 
-const images = Object.entries(imageModules)
+const notes = Object.entries(imageModules)
 	.sort(([a], [b]) => a.localeCompare(b))
-	.map(([, image]) => image)
-
-const count = images.length
+	.map(([path, image]) => ({
+		id: path.split('/').pop()?.replace(/\.[^.]+$/, '') ?? path,
+		image,
+	}))
 ---
 
 <BaseLayout colorScheme="dark" title="Sticky Notes" description="A stack of sketches on sticky notes.">
 	<div class="stack">
-		{images.map((image, index) => (
+		<canvas class="curl-canvas" aria-hidden="true"></canvas>
+		{notes.map(({ id, image }, index) => (
 			<Image
 				src={image}
 				alt="Sticky note sketch"
 				class="stack-image"
+				data-note={id}
 				style={`z-index: ${index + 1}`}
 				draggable="false"
+				loading="eager"
 			/>
 		))}
 	</div>
+	<script is:inline>
+		const noteImages = [...document.querySelectorAll('.stack-image')]
+		const noteCount = noteImages.length
+
+		if (noteCount) {
+			const hashId = decodeURIComponent(location.hash.slice(1))
+			const matchedIndex = noteImages.findIndex((image) => image.dataset.note === hashId)
+			const visibleIndex = matchedIndex < 0 ? noteCount - 1 : matchedIndex
+
+			for (let index = 0; index < noteCount; index++) {
+				const depth = (visibleIndex - index + noteCount) % noteCount
+				noteImages[index].style.zIndex = String(noteCount - depth)
+			}
+
+			const id = noteImages[visibleIndex].dataset.note
+			if (id && location.hash !== `#${id}`) history.replaceState(null, '', `#${id}`)
+		}
+	</script>
 </BaseLayout>
 
 <style is:global>
@@ -58,17 +80,146 @@ const count = images.length
 		object-fit: contain;
 		cursor: pointer;
 		user-select: none;
+		border-radius: 1px;
+
+		&.is-curling {
+			visibility: hidden;
+		}
+	}
+
+	.curl-canvas {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 10000;
+		pointer-events: none;
+		visibility: hidden;
+		background-color: transparent;
+
+		&.is-active {
+			visibility: visible;
+		}
 	}
 </style>
 
 <script>
-	const images = document.querySelectorAll<HTMLImageElement>('.stack-image')
+	import { createPageCurl } from '@lib/page-curl'
+
+	const stack = document.querySelector<HTMLElement>('.stack')
+	const images = stack
+		? [...stack.querySelectorAll<HTMLImageElement>('.stack-image')]
+		: []
 	const count = images.length
+	let activeCurls = 0
+
+	function zIndexOf(image: HTMLImageElement) {
+		return Number.parseInt(image.style.zIndex, 10) || 0
+	}
+
+	function hashId() {
+		return decodeURIComponent(location.hash.slice(1))
+	}
+
+	function showNote(id: string) {
+		const topIndex = images.findIndex((image) => image.dataset.note === id)
+		if (topIndex < 0) return false
+
+		for (let index = 0; index < count; index++) {
+			const depth = (topIndex - index + count) % count
+			images[index].style.zIndex = String(count - depth)
+		}
+
+		return true
+	}
+
+	function topImage() {
+		return images.reduce((top, image) => (
+			zIndexOf(image) > zIndexOf(top) ? image : top
+		))
+	}
+
+	function syncHash() {
+		if (!count) return
+
+		const id = topImage().dataset.note
+		if (!id || location.hash === `#${id}`) return
+
+		history.replaceState(null, '', `#${id}`)
+	}
+
+	function isTop(image: HTMLImageElement) {
+		const zIndex = zIndexOf(image)
+		return images.every((other) => other === image || zIndexOf(other) < zIndex)
+	}
+
+	function sendToBack(image: HTMLImageElement) {
+		image.style.zIndex = String(zIndexOf(image) - count)
+		syncHash()
+	}
+
+	function curlCanvas() {
+		const template = stack?.querySelector<HTMLCanvasElement>('.curl-canvas:not(.is-active)')
+		if (!template || !stack) return null
+
+		const canvas = template.cloneNode(false) as HTMLCanvasElement
+		stack.append(canvas)
+		canvas.classList.add('is-active')
+		return canvas
+	}
+
+	async function runCurl(image: HTMLImageElement) {
+		const canvas = curlCanvas()
+		if (!canvas) return
+
+		try {
+			if (!image.complete || image.naturalWidth === 0) await image.decode()
+			if (image.naturalWidth === 0) return
+
+			await createPageCurl(canvas).play(image)
+		} catch (error) {
+			console.error(error)
+		} finally {
+			canvas.remove()
+		}
+	}
+
+	if (count) {
+		const initialId = hashId()
+		if (initialId) showNote(initialId)
+		syncHash()
+	}
 
 	for (const image of images) {
 		image.addEventListener('click', () => {
-			const current = Number.parseInt(image.style.zIndex, 10) || 0
-			image.style.zIndex = String(current - count)
+			void onClick(image)
 		})
+	}
+
+	window.addEventListener('hashchange', () => {
+		if (activeCurls) return
+		if (!showNote(hashId())) syncHash()
+	})
+
+	async function onClick(image: HTMLImageElement) {
+		if (image.classList.contains('is-curling') || !isTop(image)) return
+
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		image.classList.add('is-curling')
+		sendToBack(image)
+
+		if (reduceMotion) {
+			image.classList.remove('is-curling')
+			return
+		}
+
+		activeCurls++
+
+		try {
+			await runCurl(image)
+		} finally {
+			image.classList.remove('is-curling')
+			activeCurls--
+		}
 	}
 </script>
