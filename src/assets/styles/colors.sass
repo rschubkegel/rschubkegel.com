@@ -11,8 +11,11 @@
   --color-github-dark: color-mix(in srgb, var(--color-primary-strong) 80%, var(--color-fg-muted))
   --color-github-darker: color-mix(in srgb, var(--color-primary-strong) 60%, var(--color-fg-strong))
 
+:root[data-color-scheme="dark"]
+  color-scheme: only dark
+
 @media (prefers-color-scheme: light)
-  :root
+  :root:not([data-color-scheme="dark"])
     --color-fg-muted: #484a45
     --color-fg-strong: #2a2b29
     --color-primary-muted: #498150
